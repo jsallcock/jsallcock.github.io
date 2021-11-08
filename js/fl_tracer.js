@@ -168,8 +168,6 @@ class Tracer {
     this.bz = new Blerp(r, z, data.Bz);
     this.bphi = new Blerp(r, z, data.Bphi);
     this.ds = DEFAULT_DS;
-    
-    this.rstartValue = DEFAULT_RSTART;
 
     this.rstart = DEFAULT_RSTART;
     this.nlines = DEFAULT_NLINES;
@@ -184,7 +182,6 @@ class Tracer {
     this.showAxisLastUsed = null;
     this.showXpointsLastUsed = null;
 
-    // display
     this.material = new THREE.LineBasicMaterial( {
       color: 0xffffff,
       linewidth: DEFAULT_LINEWIDTH,
@@ -202,7 +199,7 @@ class Tracer {
 
   init () {
     // initialise buffers for the field lines
-    // this must be called again when nlines changes
+    // this must be called whenever nlines changes
     // following: https://threejs.org/docs/#manual/en/introduction/How-to-update-things
     if (this.nlinesLastUsed != null) {
       for (let i = 0; i < this.nlinesLastUsed; i++) { this.remove_from_scene( 'fieldline' + i.toString() ) }
@@ -227,11 +224,12 @@ class Tracer {
     // (actually just traces one and adds the appropriate toroidal angle!)
     let [r, z, phi] = this.trace( this.rstart, 0, 0, );
     for (let j = 0; j < this.nlines; j++) {
+      let delta_phi = j * 2 * PI / this.nlines;
       let positions = this.lines[ j ].geometry.attributes.position.array;
       let idx = 0;
       for (let i = 0; i < r.length; i++) {
         if (!isNaN(r[i])) {
-          let [x_i, y_i, z_i] = cyl2cart(r[i], z[i], phi[i] + j * 2 * PI / this.nlines )
+          let [x_i, y_i, z_i] = cyl2cart(r[i], z[i], phi[i] + delta_phi )
           positions[ idx ++ ] = x_i;
           positions[ idx ++ ] = y_i;
           positions[ idx ++ ] = z_i;
@@ -261,7 +259,6 @@ class Tracer {
       this.addCircle(data['lower_xpoint_r'], data['lower_xpoint_z'], 'Chartreuse', 'xpoint_lower' );
       this.addCircle(data['upper_xpoint_r'], data['upper_xpoint_z'], 'Chartreuse', 'xpoint_upper' );
     }
-
     if (!this.showXpoints && this.scene.getObjectByName('xpoint_upper') != undefined) {
       this.remove_from_scene('xpoint_lower');
       this.remove_from_scene('xpoint_upper');
@@ -287,8 +284,8 @@ class Tracer {
     let phi = [phistart, ];
     let i = 0;
     while (i < this.maxSteps / 2) {  
-      // factor of 1 / 2 since we trace both ways. N_STEPS_MAX refers to whole composite field line. 
-      // This is important because I use N_STEPS_MAX to create buffers for the field lines.
+      // factor of 1 / 2 since we trace both ways. maxSteps refers to composite field line. 
+      // This is important because I use maxSteps to create buffers for the field lines.
       const [r_i, z_i, phi_i] = [r[i], z[i], phi[i]];
       const [dr, dz, dphi] = this.take_step(r_i, z_i, ds);
       const [r_ip, z_ip, phi_ip] = [r_i + dr, z_i + dz, phi_i + dphi];
