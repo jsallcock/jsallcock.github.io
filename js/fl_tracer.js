@@ -376,7 +376,7 @@ function plot_fl(){
   let cam, scene, renderer, geometry, material, controls, line;
   var canvas = document.getElementById('canvas-holder-fltracer');
   var width = canvas.clientWidth;
-  var height = width * 0.4;
+  var height = width * 0.35;
   var tracer = new Tracer(width, height);
   renderer = new THREE.WebGLRenderer({ antialias: true } );
   renderer.setSize( width, height );
@@ -386,7 +386,7 @@ function plot_fl(){
 
   function init() {   
     cam = new THREE.PerspectiveCamera( 60, width / height, 0.01, 500 );  // args: fov, aspect, near plane, far plane
-    cam.position.set( 4, 0, 0 );
+    cam.position.set( 3, 0, 0 );
     cam.up.set(0, 0, 1)
     cam.lookAt( 0, 0, 0 );
     
