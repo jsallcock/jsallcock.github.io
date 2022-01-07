@@ -14,6 +14,9 @@
           width: 100%;
           height: 400;
       }
+      p {
+           margin: 35px;
+      }
       </style>
 </head>
 <body>
@@ -35,13 +38,13 @@
   <script src="js/THREE.MeshLine.js"></script>
   <script type="module" src="js/fl_tracer.js"></script>
   <p>
-  In the lab and in the classroom, field lines are a useful way to visualise a vector field. To construct a field line, we simply draw a line in space which is tangent to the field vector at each point along its path. As well as being used to make [bad album art](https://en.wikipedia.org/wiki/Death_Magnetic), field lines can, in some situations, take on physical significance. One example is in plasma physics, where the [Lorentz force](https://en.wikipedia.org/wiki/Lorentz_force) acts on charged particles to effectively limit their motion to along magnetic field lines. This effect is put to good use in magnetic confinement fusion (MCF) experiments (e.g. the [tokamak](https://en.wikipedia.org/wiki/Tokamak)), where the magnetic field geometry is carefully designed so as to minimise contact between the hot plasma and the cool reactor walls. This is the reason that all modern MCF experiments are shaped like doughnuts.
+  In the lab and in the classroom, field lines are a useful way to visualise a vector field. To construct a field line, we simply draw a line in space which is tangent to the field vector at each point along its path. As well as being used to make <a href="https://en.wikipedia.org/wiki/Death_Magnetic">bad album art</a>, field lines can, in some situations, take on physical significance. One example is in plasma physics, where the <a href="https://en.wikipedia.org/wiki/Lorentz_force">Lorentz force</a> acts on charged particles to effectively limit their motion to along magnetic field lines. This effect is put to good use in magnetic confinement fusion (MCF) experiments (e.g. the <a href="https://en.wikipedia.org/wiki/Tokamak">tokamak</a>, where the magnetic field geometry is carefully designed so as to minimise contact between the hot plasma and the cool reactor walls. This is the reason that all modern MCF experiments are shaped like doughnuts.
   </p>
   <p>
-  The operators of a tokamak produce the required magnetic field (B-field for short) using external coils and also, indirectly, by driving electrical current within the plasma itself. Since it plays such a big role in fusion performance, great care is taken to measure the B-field accross the plasma volume during an experiment, and this data is studied in detail when the experiment ~~breaks~~ is not running. We are interested in whether the measured B-field is as expected, since a large deviation means that something is wrong, either with the experiment or with our understanding of the physics involved.
+  The operators of a tokamak produce the required magnetic field (B-field for short) using external coils and also, indirectly, by driving electrical current within the plasma itself. Since it plays such a big role in fusion performance, great care is taken to measure the B-field accross the plasma volume during an experiment, and this data is studied in detail when the experiment <del>breaks</del> is not running. We are interested in whether the measured B-field is as expected, since a large deviation means that something is wrong, either with the experiment or with our understanding of the physics involved.
   </p>
   <p>
-  So, visualising these B-field lines in an intuitive way is important, and we have the data to do it. It also looks really cool. This post describes my efforts to make an interactive, web-based visualiser for the tokamak magnetic field. Specifically, we will look at the [MAST-U](https://ccfe.ukaea.uk/research/mast-upgrade/) spherical tokamak in the UK. My main goal here is to learn more about tools for 3-D graphics, so that will be the focus. I will be using JavaScript but a warning at the outset: I haven't written a single line of JavaScript before and my code will be bad.
+  So, visualising these B-field lines in an intuitive way is important, and we have the data to do it. It also looks really cool. This is a toy visualiser for the tokamak magnetic field. Specifically, this is the <a href="https://ccfe.ukaea.uk/research/mast-upgrade/">MAST-U</a> spherical tokamak at UKAEA.
   </p>
 </body>
 </html>
