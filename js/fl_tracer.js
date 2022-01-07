@@ -386,7 +386,7 @@ function plot_fl(){
 
   function init() {   
     cam = new THREE.PerspectiveCamera( 60, width / height, 0.01, 500 );  // args: fov, aspect, near plane, far plane
-    cam.position.set( 5, 0, 0 );
+    cam.position.set( 4, 0, 0 );
     cam.up.set(0, 0, 1)
     cam.lookAt( 0, 0, 0 );
     
