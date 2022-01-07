@@ -4,7 +4,7 @@
 // At its core a JavaScript port of Nick Walkden's pyFieldlineTracer. 
 // I am *NOT* experienced with JavaScript so this could cause big problemos (memory leaks etc.)
 
-// import test data: normallised magnetic field vector (R, Z, phi) on cylindrical coordinate grid (R, Z) (toroidal symmetry assumed) 
+// import test data: normalised magnetic field vector (R, Z, phi) on cylindrical coordinate grid (R, Z) (toroidal symmetry assumed) 
 import data from './45245.js';
 var IDX_TIME = 0;
 var ONE_SIXTH = 1 / 6;
