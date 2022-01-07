@@ -376,7 +376,7 @@ function plot_fl(){
   let cam, scene, renderer, geometry, material, controls, line;
   var canvas = document.getElementById('canvas-holder-fltracer');
   var width = canvas.clientWidth;
-  var height = width * 0.5;
+  var height = width * 0.4;
   var tracer = new Tracer(width, height);
   renderer = new THREE.WebGLRenderer({ antialias: true } );
   renderer.setSize( width, height );
